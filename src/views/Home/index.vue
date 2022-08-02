@@ -13,7 +13,7 @@
         <article-list :id="item.id"></article-list>
       </van-tab>
 
-      <span class="toutiao toutiao-gengduo1"></span>
+      <span class="toutiao toutiao-gengduo1" @click="show = true"></span>
     </van-tabs>
 
     <!-- 频道弹层 -->
@@ -23,24 +23,27 @@
       :style="{ height: '100%' }"
       closeable
       close-icon-position="top-left"
-      >内容</van-popup
     >
+      <channel-popup></channel-popup>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import { getMyChannel as getMyChannelAPI } from '@/api'
 import ArticleList from './components/ArticleList.vue'
+import ChannelPopup from './components/ChannelPopup.vue'
 export default {
   name: 'Home',
   components: {
-    ArticleList
+    ArticleList,
+    ChannelPopup
   },
   data() {
     return {
       active: 0,
       myChannels: [],
-      show: true
+      show: false
     }
   },
   created() {
@@ -131,6 +134,7 @@ export default {
   text-align: center;
   opacity: 0.9;
   border-bottom: 1px solid #eee;
+  z-index: 999;
 
   position: fixed;
   top: 92px;
