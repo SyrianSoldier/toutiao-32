@@ -15,6 +15,16 @@
 
       <span class="toutiao toutiao-gengduo1"></span>
     </van-tabs>
+
+    <!-- 频道弹层 -->
+    <van-popup
+      v-model="show"
+      position="bottom"
+      :style="{ height: '100%' }"
+      closeable
+      close-icon-position="top-left"
+      >内容</van-popup
+    >
   </div>
 </template>
 
@@ -29,7 +39,8 @@ export default {
   data() {
     return {
       active: 0,
-      myChannels: []
+      myChannels: [],
+      show: true
     }
   },
   created() {
